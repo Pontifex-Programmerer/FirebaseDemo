@@ -1,0 +1,52 @@
+.main {
+    text-align: center;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+input {
+    margin: 0.2em 0;
+    font-size: 1.2em;
+    width: 100%;
+    text-align: center;
+}
+
+form {
+    padding: 1em;
+}
+
+form,
+.counter {
+    background-color: blanchedalmond;
+    border-radius: 2em;
+    padding: 2em;
+}
+
+h1 {
+    color: rgb(81, 0, 0);
+    font-size: 2em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.warning {
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
+.counter #counter {
+    display: inline-block;
+    padding: 1ch;
+}
+
+.counter button {
+    height: 3ch;
+    background-color: rgb(209, 95, 24);
+    color: rgb(26, 255, 0);
+    font-size: 1.5em;
+    border: none;
+    border-radius: 5px;
+    width: 2ch;
+}
