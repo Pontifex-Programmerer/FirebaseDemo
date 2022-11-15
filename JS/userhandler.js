@@ -1,24 +1,34 @@
 const countersection = document.querySelector('#countersection');
 const counter = document.querySelector('#counter');
 const loginForm = document.querySelector('#loginform');
-
+const logoutlink = document.querySelector('#logout');
 const counterDoc = db.collection('counters').doc('zMii3zJGOAOcadleEIux');
 let username = null;
 
 let localCounter = 'X';
 
-//listener for the counterdocument.
+//listener for the counterdocument. All updates are relayed to the
+//counter element.
 counterDoc.onSnapshot(snapshot => {
     localCounter = snapshot.data().count;
     counter.innerText = localCounter;
 });
 
+//listener for the logout form. Listens for keypresses, especially 'Enter'
 loginForm.addEventListener('keypress', event => {
     if(event.key === 'Enter' && loginForm['username'].value.length > 5 && loginForm['password'].value.length > 5){
         login(loginForm['username'].value);
     }
 });
 
+//listener for the logout link that calls the logout function
+logoutlink.addEventListener('click', e => {
+    logout();
+});
+
+
+//Event listener fire the + and - that affects the counter.
+//updates the counter document.
 countersection.addEventListener('click', e => {
     e.preventDefault();
     const emitter = e.target.textContent;
@@ -35,6 +45,9 @@ countersection.addEventListener('click', e => {
     }
 });
 
+//The loginfunction checks if a user exists in the database.
+//If a user exists, the login element is hidden and the counter element is displayed
+//if a user does not exist, the user is informed through a warning.
 function login(inputuser){
     db.collection('users').where('username','==', inputuser).get()
     .then(result => {
@@ -65,10 +78,18 @@ function login(inputuser){
     }).catch(err => console.log(err));
 }
 
+//clears the username variable, shows the loginform and hides the counter
+function logout(){
+    username = null;
+    loginForm.classList.toggle('hidden');
+    countersection.classList.toggle('hidden');
+}
+
+//shows the counter, hides the loginform and clears the fields of the loginform.
 function renderCounter(){
     loginForm.classList.toggle('hidden');
     countersection.classList.toggle('hidden');
-    console.log('setting username', username)
+    loginForm['username'].value = "";
+    loginForm['password'].value = "";
     document.querySelector('#username').innerText = username;
 }
-

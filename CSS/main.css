@@ -50,3 +50,13 @@ h1 {
     border-radius: 5px;
     width: 2ch;
 }
+
+#logout {
+    color: blue;
+    text-decoration: underline;
+    display: block;
+}
+
+#logout:hover {
+    cursor: pointer;
+}

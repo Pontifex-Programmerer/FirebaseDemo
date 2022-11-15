@@ -4,14 +4,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/main.css">
+
+    <!-- import core firebase functionality -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
+    <!-- import firestore functinality-->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" defer></script>
+    <!-- initiate firebase with config and all that -->
     <script src="./JS/firebaseInit.js" defer></script>
+    <!-- implement firebase firestore on the website -->    
     <script src="./JS/userhandler.js" defer></script>
+
     <title>Firebase - Example</title>
 </head>
 <body>
     <section class="main">
+        <!-- The form is shown by default. It demonstrates conceptual login functinality-->
         <form id="loginform">
             <h1>Please log in!</h1>
             <input type="email" name="username" id="email" name="email" placeholder="yourname@domain.dom">
@@ -19,12 +26,13 @@
             <p class="warning hidden" name="feedback" id="feedback"></p>
         </form>
         
-            
+        <!-- This section is shown when the user is logged in -->
         <section class="counter hidden" id="countersection">
             <h1 id="username"></h1>
             <button id="-">-</button>
             <h1 id="counter">X</h1>
             <button id="+">+</button>
+            <a id="logout">Log out</a>
         </section>
     </section>
 
